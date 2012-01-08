@@ -26,7 +26,7 @@ public class BlockeyPlayerListener extends PlayerListener{
 			//Location start = event.getFrom();
 			Location end = event.getTo();
 			//System.out.println("From: X=" + start.getX() + " Z=" + start.getZ() + " To: X=" + end.getX() + " Z=" + end.getZ());
-			if(plugin.validMovement(end)){
+			if(!plugin.validMovement(end)){
 				event.setCancelled(true);
 				player.teleport(plugin.returnValidLocation(end));
 			}
