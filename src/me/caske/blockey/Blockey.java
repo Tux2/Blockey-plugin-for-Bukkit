@@ -106,7 +106,7 @@ public class Blockey extends JavaPlugin{
 	public boolean validMovement(Location loc) {
 		double xdiff = carrierloc.getX() - loc.getX();
 		double zdiff = carrierloc.getZ() - loc.getZ();
-		if((-0.5 < xdiff && xdiff < 0.5) && (-0.5 < zdiff && zdiff < 0.5)) {
+		if((-0.5d < xdiff && xdiff < 0.5d) && (-0.5d < zdiff && zdiff < 0.5d)) {
 			return true;
 		}else {
 			return false;
@@ -119,7 +119,9 @@ public class Blockey extends JavaPlugin{
 	
 	public void setCarrier(Player player){
 		carrier = player;
-		carrierloc = player.getLocation().clone();
+		if(player != null) {
+			carrierloc = player.getLocation().clone();
+		}
 	}
     
     private void setupSpout() {
