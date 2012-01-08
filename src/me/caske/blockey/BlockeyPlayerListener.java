@@ -23,11 +23,12 @@ public class BlockeyPlayerListener extends PlayerListener{
 	public void onPlayerMove(PlayerMoveEvent event){
 		Player player = event.getPlayer();
 		if(plugin.registered(player) && player.equals(plugin.getCarrier())){
-			Location start = event.getFrom();
+			//Location start = event.getFrom();
 			Location end = event.getTo();
 			//System.out.println("From: X=" + start.getX() + " Z=" + start.getZ() + " To: X=" + end.getX() + " Z=" + end.getZ());
-			if(start.getBlockX()!=end.getBlockX() || start.getBlockZ()!=end.getBlockZ()){
+			if(plugin.validMovement(end)){
 				event.setCancelled(true);
+				player.teleport(plugin.returnValidLocation(end));
 			}
 		}
 	}

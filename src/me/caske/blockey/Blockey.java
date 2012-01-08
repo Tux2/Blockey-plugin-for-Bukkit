@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.logging.Logger;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -22,6 +23,7 @@ public class Blockey extends JavaPlugin{
 	
 	public static Blockey plugin;
 	private Player carrier = null;
+	private Location carrierloc = null;
 	//defining the playerListener
 	private final BlockeyPlayerListener playerListener = new BlockeyPlayerListener(this);
 	//defining the HashMap with the Players in it
@@ -101,8 +103,23 @@ public class Blockey extends JavaPlugin{
 		return carrier;
 	}
 	
+	public boolean validMovement(Location loc) {
+		double xdiff = carrierloc.getX() - loc.getX();
+		double zdiff = carrierloc.getZ() - loc.getZ();
+		if((-0.5 < xdiff && xdiff < 0.5) && (-0.5 < zdiff && zdiff < 0.5)) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	public Location returnValidLocation(Location loc) {
+		return new Location(carrierloc.getWorld(), carrierloc.getX(), carrierloc.getY(), carrierloc.getZ(), loc.getYaw(), loc.getPitch());
+	}
+	
 	public void setCarrier(Player player){
 		carrier = player;
+		carrierloc = player.getLocation().clone();
 	}
     
     private void setupSpout() {
