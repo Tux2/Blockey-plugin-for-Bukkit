@@ -1,7 +1,8 @@
 name: Blockey
 main: me.caske.blockey.Blockey
-version: 1.0
+version: 1.0.1
 description: Blockey, a minigame in Minecraft (invented by Triadian)
+softdepend: [Spout]
 commands: 
  Blockey:
   description: turn on blockey for you.
