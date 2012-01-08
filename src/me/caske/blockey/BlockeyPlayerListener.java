@@ -25,7 +25,7 @@ public class BlockeyPlayerListener extends PlayerListener{
 		if(plugin.registered(player) && player.equals(plugin.getCarrier())){
 			Location start = event.getFrom();
 			Location end = event.getTo();
-			if(start.getX()!=end.getX() || start.getY()!=end.getY()){
+			if(start.getX()!=end.getX() || start.getZ()!=end.getZ()){
 				event.setCancelled(true);
 			}
 		}
